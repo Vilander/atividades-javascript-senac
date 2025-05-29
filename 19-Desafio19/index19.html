@@ -1,0 +1,25 @@
+<script>
+
+let nomeCurso = prompt("Informe o nome do curso" , "Digite aqui"); 
+let codigoCurso = prompt("Informe o codigo do curso" , "Digite aqui"); 
+let novoConteudo = "S"; 
+let conteudoTemp = ""; 
+let conteudoCurso = []; 
+let contador = 0;
+
+while(novoConteudo == "S"){ 
+    conteudoTemp = prompt("Informe o conteudo do curso" , "Digite aqui"); 
+    conteudoCurso.push(conteudoTemp); 
+    novoConteudo = prompt("Deseja cadastrar um novo conteúdo para o curso?[S]im / [N]ao" , "Digite aqui"); 
+} 
+
+console.clear(); 
+document.write("\nCodigo: " + codigoCurso); 
+document.write("\nCurso: " + nomeCurso); 
+document.write("\nConteúdo: "); 
+
+while(contador < conteudoCurso.length){ 
+    document.write(conteudoCurso[contador]); 
+    contador++; }
+
+</script>

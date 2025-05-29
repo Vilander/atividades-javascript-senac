@@ -1,0 +1,21 @@
+<script>
+
+    let quantidadeNumeros = 0; 
+    let novoNumero = "S"; 
+    let media = 0; 
+    let numero = 0;
+    let somaNumeros = 0; 
+
+
+    while(novoNumero == "S"){ 
+        numero = prompt("Informe um numero","Digite aqui!");
+        somaNumeros = parseFloat(somaNumeros) + parseFloat  (numero); 
+        quantidadeNumeros = quantidadeNumeros + 1; 
+        novoNumero = prompt("Deseja informar mais um numero? \n [S]im\n[N]ao"); 
+    }
+
+
+    media = somaNumeros / quantidadeNumeros; 
+    console.log("A media dos numeros informados é " + media);
+    alert("A media dos numeros informados é " + media);
+</script>

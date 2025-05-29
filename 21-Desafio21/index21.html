@@ -1,0 +1,23 @@
+<script> 
+    let nomes = []; 
+    let telefones = []; 
+    let cidades = []; 
+    let novoContato = "S"; 
+    let contador = 0; 
+
+    while(novoContato == "S"){ 
+        nomes[contador] = prompt("Informe o nome",""); 
+        telefones[contador] = prompt("Informe o telefone",""); 
+        cidades[contador] = prompt("Informe a cidade",""); 
+        novoContato = prompt("Cadastrar novo contato?[S]im / [N]ao",""); 
+        contador++; 
+    } 
+
+    for(i=0;i < nomes.length ; i++){ 
+        document.write("\nNome: " + nomes[i]); 
+        document.write("\nTelefone: " + telefones[i]); 
+        document.write("\nCidade: " + cidades[i]); 
+        document.write("\n----------"); 
+    } 
+
+</script>
