@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        h1 { text-align: center; }
+        input { width: 70%; padding: 10px; margin-right: 10px; }
+        button { padding: 10px; }
+        ul { list-style: none; padding: 0; }
+        li { background: #fff; padding: 10px; margin: 5px 0; display: flex; justify-content: space-between; align-items: center; }
+        .remove { background: red; color: #fff; border: none; padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <input type="text" id="tarefa" placeholder="Digite uma tarefa">
+    <button onclick="adicionarTarefa()">Adicionar</button>
+    <ul id="lista"></ul>
+
+    <script>
+        const lista = document.getElementById("lista");
+        const input = document.getElementById("tarefa");
+
+        function adicionarTarefa() {
+            const texto = input.value.trim();
+            if (texto === "") return;
+            const li = document.createElement("li");
+            li.textContent = texto;
+
+            const btn = document.createElement("button");
+            btn.textContent = "Remover";
+            btn.classList.add("remove");
+            btn.onclick = function() {
+                lista.removeChild(li);
+                salvarLista();
+            };
+
+            li.appendChild(btn);
+            lista.appendChild(li);
+            input.value = "";
+            salvarLista();
+        }
+
+        function salvarLista() {
+            const tarefas = [];
+            lista.querySelectorAll("li").forEach(li => {
+                tarefas.push(li.firstChild.textContent);
+            });
+            localStorage.setItem("tarefas", JSON.stringify(tarefas));
+        }
+
+        function carregarLista() {
+            const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+            tarefas.forEach(texto => {
+                const li = document.createElement("li");
+                li.textContent = texto;
+
+                const btn = document.createElement("button");
+                btn.textContent = "Remover";
+                btn.classList.add("remove");
+                btn.onclick = function() {
+                    lista.removeChild(li);
+                    salvarLista();
+                };
+
+                li.appendChild(btn);
+                lista.appendChild(li);
+            });
+        }
+
+        carregarLista();
+    </script>
+</body>
+</html>

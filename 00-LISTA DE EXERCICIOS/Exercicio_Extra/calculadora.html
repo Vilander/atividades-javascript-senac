@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f4f4f4; }
+        .calculadora { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+        input { width: 100%; height: 40px; margin-bottom: 10px; font-size: 18px; text-align: right; padding: 5px; }
+        button { width: 60px; height: 40px; margin: 5px; font-size: 18px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" id="tela" readonly>
+        <br>
+        <button onclick="adicionar('7')">7</button>
+        <button onclick="adicionar('8')">8</button>
+        <button onclick="adicionar('9')">9</button>
+        <button onclick="adicionar('/')">/</button><br>
+        <button onclick="adicionar('4')">4</button>
+        <button onclick="adicionar('5')">5</button>
+        <button onclick="adicionar('6')">6</button>
+        <button onclick="adicionar('*')">*</button><br>
+        <button onclick="adicionar('1')">1</button>
+        <button onclick="adicionar('2')">2</button>
+        <button onclick="adicionar('3')">3</button>
+        <button onclick="adicionar('-')">-</button><br>
+        <button onclick="adicionar('0')">0</button>
+        <button onclick="limpar()">C</button>
+        <button onclick="calcular()">=</button>
+        <button onclick="adicionar('+')">+</button>
+    </div>
+    <script>
+        const tela = document.getElementById("tela");
+        function adicionar(valor) {
+            tela.value += valor;
+        }
+        function limpar() {
+            tela.value = "";
+        }
+        function calcular() {
+            try {
+                tela.value = eval(tela.value);
+            } catch (e) {
+                tela.value = "Erro";
+            }
+        }
+    </script>
+</body>
+</html>
